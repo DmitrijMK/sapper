@@ -1,0 +1,29 @@
+h1 {
+    text-align: left;
+    text-transform: uppercase;
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    display: flex;
+    flex-direction: column;
+}
+
+#table {
+    justify-content: right;
+    margin: 30px;
+}
+
+button {
+    margin: 10px 0;
+}
