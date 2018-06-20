@@ -1,4 +1,4 @@
-const isCorrectValue = n => !isNaN(parseFloat(n)) && isFinite(n);
+const isCorrectValue = n => !isNaN(parseFloat(n)) && isFinite(n) && n;
 const field = Math.ceil(prompt('field', 100));
 const bombs = Math.ceil(prompt('bombs', 10));
 const table = document.getElementById('table');
