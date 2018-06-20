@@ -14,16 +14,75 @@ h1 {
     display: flex;
     flex-direction: column;
 }
+
 label {
     display: flex;
     flex-direction: column;
 }
 
 #table {
-    justify-content: right;
+    display: flex;
     margin: 30px;
+    width: 320px;
+    flex-wrap: wrap;
+    border: 5px solid #000;
 }
 
-button {
-    margin: 10px 0;
+#table div {
+    cursor: pointer;
+    text-align: center;
+}
+
+#game {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#game div {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #555;
+    align-self: center;
+}
+
+#header {
+    width: 100%;
+    text-align: center;
+    background: red;
+    line-height: 0;
+    padding: 30px;
+    margin: 0;
+    color: white;
+    border: 1px solid #555;
+}
+
+#subheader {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: yellow;
+    padding: 10px;
+    margin: 0;
+}
+
+#startNewGame {
+    margin-top: 15px;
+}
+
+.bomb {
+    background: red;
+    color: red;
+}
+
+.close {
+    background: #777;
+    color: #777;
+    border: 1px solid #777;
+}
+
+.flag {
+    background: lawngreen;
+    color: lawngreen;
 }
