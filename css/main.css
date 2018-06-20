@@ -7,17 +7,6 @@ h1 {
     display: flex;
     flex-direction: row;
     justify-content: stretch;
-
-}
-
-#form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    display: flex;
-    flex-direction: column;
 }
 
 #table {

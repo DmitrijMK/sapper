@@ -1,21 +1,20 @@
-game();
-//
-// const field = document.getElementById('field');
-// const setBombs = document.getElementById('bombs');
-// const table = document.getElementById('table');
-// const button = document.getElementById('startNewGame');
-//
-// function render() {
-//     let div = document.getElementById('game');
-//     table.setAttribute('style', `width:${field.value * 3.2}px`);
-//     table.removeChild(div);
-//     let newGame = table.createElement('div');
-//     table.appendChild(newGame);
-//     newGame.setAttribute('id', 'game');
-// }
-//
-// // button.addEventListener('click', () => render());
-// button.addEventListener('click', () => game(setBombs.value, field.value));
+const field = prompt('field', 100);
+const bombs = prompt('bombs', 10);
+
+if(!field || !bombs){
+    let l = alert('please enter value');
+    window.location.reload();
+}
+
+const table = document.getElementById('table');
+const button = document.getElementById('startNewGame');
+
+button.addEventListener('click', () => window.location.reload());
+table.setAttribute('style', `width:${field * 3.2}px`);
+game(bombs, field);
+
+
+
 
 
 

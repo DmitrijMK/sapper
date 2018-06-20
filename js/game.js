@@ -1,6 +1,7 @@
 function game(setBombs = 10, fields = 100) {
     let bombs = 0;
     const subheader = document.getElementById('subheader');
+
     subheader.innerHTML = `${fields} left to clear`;
 
     /* Проверка на бомбу */
@@ -10,6 +11,7 @@ function game(setBombs = 10, fields = 100) {
     /* Создание поля */
     for (let i = 0; i < fields; i++) {
         const field = document.createElement('div');
+
         field.className = 'close';
         field.id = `${Math.floor(i / 10)}_${i % 10}`;
         document.getElementById('game').appendChild(field);
@@ -20,10 +22,11 @@ function game(setBombs = 10, fields = 100) {
         const collection = document.getElementsByClassName('close');
 
         for (let i = 0; setBombs > bombs; i++) {
-            if (Math.random() < 0.1 && setBombs !== bombs && !collection[i].hasAttribute('bomb')) {
+            if (Math.random() < 0.05 && setBombs !== bombs && !collection[i].hasAttribute('bomb')) {
                 collection[i].setAttribute('bomb', 'bomb');
                 document.getElementById('header').innerHTML = (++bombs) + ' bombs';
             }
+
             if (i === collection.length - 1 && setBombs > bombs) i = 0;
         }
     }
@@ -36,11 +39,6 @@ function game(setBombs = 10, fields = 100) {
         const x = i % 10;             //ось x
         const collectionFields = document.getElementById(y + '_' + x);
         let numberOfNearestBombs = 0;
-
-        // if (setBombs !== bombs && Math.random() > 0.7) {
-        //     collectionFields.setAttribute('bomb', 'bomb');
-        //     document.getElementById('header').innerHTML = (++bombs) + ' bombs';
-        // }
 
         for (let i = 0; i < 9; i++) {
             numberOfNearestBombs += searchBomb(`${(y - (Math.floor(i / 3) - 1))}_${(x - (i % 3 - 1))}`);
@@ -56,6 +54,7 @@ function game(setBombs = 10, fields = 100) {
         collectionFields.oncontextmenu = function () {
             this.className = this.className.indexOf('flag') !== -1 ?
                 this.className.replace(/ flag/, '') : this.className + ' flag';
+
             return false;
         }
     }
@@ -71,20 +70,22 @@ function game(setBombs = 10, fields = 100) {
             let remainingCloseFields = 0;
             selectedField.className = 'open';
 
-            //Открытие соседних ячеек
+            //Открытие соседних ячеек если пустые
             for (let elem of elements) {
                 if (elem.className && elem.className.indexOf('close') !== -1) remainingCloseFields++;
             }
+
             subheader.innerHTML = `${remainingCloseFields} left to clear`;
 
-            if (remainingCloseFields <= bombs) subheader.innerHTML = 'You win!';
+            if (remainingCloseFields <= bombs) alert('You win!');
         } else {
             const collection = document.getElementsByTagName('div');
 
             for (let i = 0; i < collection.length; i++) {
                 collection[i].className = collection[i].hasAttribute('bomb') !== false ? 'bomb' : 'open';
             }
-            subheader.innerHTML = 'You lose!';
+
+            question('You lose!');
         }
 
         if (selectedField.innerHTML === ' ') {
@@ -93,4 +94,12 @@ function game(setBombs = 10, fields = 100) {
             }
         }
     }
+}
+
+function question(value) {
+    alert(value);
+    window.location.reload();
+    const answer = confirm('Next game ?');
+    if (!answer) alert('Why No? Lets play!');
+    else window.location.reload();
 }
