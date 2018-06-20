@@ -11,11 +11,3 @@ if(!isCorrectValue(field) || !isCorrectValue(bombs) || (bombs > field)){
 
 button.addEventListener('click', () => window.location.reload());
 table.setAttribute('style', `width:${field * 3.2}px`);
-
-
-
-
-
-
-
-

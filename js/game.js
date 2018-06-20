@@ -77,7 +77,10 @@ function game(setBombs = 10, fields = 100) {
             // осталось разменировать
             subheader.innerHTML = `${remainingCloseFields} left to clear`;
 
-            if (remainingCloseFields <= bombs) alert('You win!');
+            if (remainingCloseFields <= bombs) {
+                alert('You win!');
+                subheader.innerHTML = 'You win!';
+            }
         } else {
             const collection = document.getElementsByTagName('div');
 
@@ -86,6 +89,7 @@ function game(setBombs = 10, fields = 100) {
             }
 
             alert('You lose!');
+            subheader.innerHTML = 'You lose!';
         }
 
         //Открытие соседних ячеек если пустые
